@@ -24,7 +24,8 @@ uploaded_file = st.sidebar.file_uploader("Upload CSV (must have 'text' and 'labe
 
 if uploaded_file:
     try:
-        df = pd.read_csv(uploaded_file, encoding="utf-8")
+        
+        df = pd.read_csv(uploaded_file,encoding="utf-8",header=0,names=["tweet_id", "text", "label", "language", "target"])
     except UnicodeDecodeError:
         try:
             df = pd.read_csv(uploaded_file, encoding="utf-8-sig")
